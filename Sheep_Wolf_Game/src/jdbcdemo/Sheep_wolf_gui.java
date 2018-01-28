@@ -164,7 +164,8 @@ public class Sheep_wolf_gui extends JFrame implements ActionListener {
 	}
 	
 	public void login(){
-		try{
+		try
+		{
 			Connection connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/abc", "root", "Rajasekar*1");
 			
 			Statement mystatement = connect.createStatement();
@@ -184,47 +185,36 @@ public class Sheep_wolf_gui extends JFrame implements ActionListener {
 			if(user_name.equals(user)&& pass_word.equals(pwd) )
 			{
 					
-					//win.setText(roll_no);
-					System.out.println(user_name);
-					
-					
-					
-					
-					JOptionPane.showMessageDialog(this,
-					        "Successfully logged in: Ready to Play",
-					        "Successful Login",
-					        JOptionPane.INFORMATION_MESSAGE);
+				System.out.println(user_name);
 				
-					
-					DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
-					Date date = new Date();
-					
-					panel2.setVisible(true);
-					
-					JTextField log_r = new JTextField(10);
-					JTextField log_date = new JTextField(10);
-					JTextField wins = new JTextField(10);
-					JTextField losses = new JTextField(10);
-					
-					panel2.add(sample);
-					panel2.add(log_r);
-					panel2.add(sample_start);
-					panel2.add(log_date);
-					panel2.add(No_wins);
-					panel2.add(wins);
-					//panel2.add(No_losses);
-					//panel2.add(losses);
-					panel2.add(start);
-					log_r.setText(user);
-					log_date.setText(dateFormat.format(date));
-					
-					
+				JOptionPane.showMessageDialog(this,
+						"Successfully logged in: Ready to Play",
+						"Successful Login",
+						JOptionPane.INFORMATION_MESSAGE);
+			
 				
+				DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
+				Date date = new Date();
 				
+				panel2.setVisible(true);
 				
+				JTextField log_r = new JTextField(10);
+				JTextField log_date = new JTextField(10);
+				JTextField wins = new JTextField(10);
+				JTextField losses = new JTextField(10);
+				
+				panel2.add(sample);
+				panel2.add(log_r);
+				panel2.add(sample_start);
+				panel2.add(log_date);
+				panel2.add(No_wins);
+				panel2.add(wins);
+				panel2.add(start);
+				log_r.setText(user);
+				log_date.setText(dateFormat.format(date));
+					
 				System.out.println(dateFormat.format(date)); 
 				System.out.println(old_wins);
-				//System.out.println(user_name);
 			}	
 			
 			
@@ -233,7 +223,7 @@ public class Sheep_wolf_gui extends JFrame implements ActionListener {
 				
 				panel2.setVisible(false);
 				
-				 JOptionPane.showMessageDialog(this,
+				JOptionPane.showMessageDialog(this,
 					        "Invalid Username or password",
 					        "Invalid Credentials",
 					        JOptionPane.INFORMATION_MESSAGE);
@@ -245,16 +235,11 @@ public class Sheep_wolf_gui extends JFrame implements ActionListener {
 		catch(Exception exc){
 			exc.printStackTrace();
 		}
-		
-
-		
 	}
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		Sheep_wolf_gui d = new Sheep_wolf_gui();
-		
-				
 	}
 	
 
@@ -262,15 +247,14 @@ public class Sheep_wolf_gui extends JFrame implements ActionListener {
 	
 	class Sheep_wolf implements ActionListener
     {       
-		//dispose();
+		
 		JPanel gui = new JPanel(new BorderLayout(3, 3));
-	    // public JPanel [][] squares = new JPanel[8][8];
-	      JToolBar tools ;
+		  JToolBar tools ;
 	      JLabel sheep;
 	      JLabel pic;
 	       JLabel [] wolves;
 	       ObjectOutputStream out=null;
-	    //  private JPanel chessBoard;
+	    
 	       Socket so ;
 	        
 	         int testX;
@@ -280,8 +264,8 @@ public class Sheep_wolf_gui extends JFrame implements ActionListener {
              UUID uuId = UUID.randomUUID();
 	         
 	    Sheep_wolf() {
-	        //initializeGui();
-	    	setTitle(uuId.toString());
+	        
+	    	 setTitle(uuId.toString());
 	         int xCoordinate;
 	         int yCoordinate; 
 	    }
@@ -291,9 +275,8 @@ public class Sheep_wolf_gui extends JFrame implements ActionListener {
 	    	dispose();
 	    	JPanel gui = new JPanel(new BorderLayout(3, 3));
 	        Container c = getContentPane();
-	        //c.setLayout(new GridLayout(8,8, 1,1)); 
-	      
-	        JFrame test = new JFrame();
+	        
+			JFrame test = new JFrame();
 	        gui.setBorder(new EmptyBorder(5, 5, 5, 5));
 	        tools = new JToolBar();
 	        tools.setFloatable(false);
@@ -305,7 +288,8 @@ public class Sheep_wolf_gui extends JFrame implements ActionListener {
 		    final java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("mm : ss");
 		    final JLabel clock = new JLabel(sdf.format(new Date(THIRTY_MINUTES)),JLabel.CENTER);
 		    int x = 0;
-		    ActionListener al = new ActionListener()
+		    
+			ActionListener al = new ActionListener()
 		    {
 		      long x = THIRTY_MINUTES - 1000;
 		      public void actionPerformed(ActionEvent ae)
@@ -313,13 +297,14 @@ public class Sheep_wolf_gui extends JFrame implements ActionListener {
 		        clock.setText(sdf.format(new Date(x)));
 		        x -= 1000;
 		       }
-		     };
-		    new javax.swing.Timer(1000, al).start();
+		    };
+		    
+			new javax.swing.Timer(1000, al).start();
 		    JPanel jp = new JPanel();
 		    jp.add(clock);
 		    tools.add(jp);
 		    pack();
-		     sheep=new JLabel(new ImageIcon("C:\\Users\\Mano\\Downloads\\final_sheep1.jpg"));
+		    sheep=new JLabel(new ImageIcon("C:\\Users\\Mano\\Downloads\\final_sheep1.jpg"));
 		  
 		    wolves = new JLabel[4];
 		    for(int i=0 ;i<4;i++)//load wolves background image
@@ -339,10 +324,7 @@ public class Sheep_wolf_gui extends JFrame implements ActionListener {
 					wolves[i].addMouseListener(new liste_wolf());
 		         pic = new JLabel(new ImageIcon("C:\\Users\\Mano\\Downloads\\final_Board.gif"));
 		    
-		  //test.add(pic);
-		   
-		        
-		        gui.add(pic);
+				gui.add(pic);
 		        c.add(gui);
 		        test.add(c);
 		        test.setSize(270,330);
@@ -352,22 +334,25 @@ public class Sheep_wolf_gui extends JFrame implements ActionListener {
 		         
 		         System.out.println("hey");
 		         
-		         try{
-		     		
-		    		 so = new Socket(InetAddress.getLocalHost(),5000);
-		    		//display.append(" Socket Created\n");
-		                    System.out.println("Socket Created");
-		                            input = so.getInputStream();
+		         try
+				 {
+		     		so = new Socket(InetAddress.getLocalHost(),5000);
+		    		
+		                System.out.println("Socket Created");
+		                input = so.getInputStream();
 		    			output = so.getOutputStream();
 
 		    			Thread mythread = new Thread(new Runnable() {
 		                         @Override
 		                         public void run() {
 		                             while(true){
-		                                 try {
+		                                 try 
+										 {
 		                                     EventInformation coord = (EventInformation) new ObjectInputStream(input).readObject();
-		                                     if(coord.getFrom().equalsIgnoreCase("SERVER")){
-		                                         if(!coord.getGuiId().equalsIgnoreCase(uuId.toString())){
+		                                     if(coord.getFrom().equalsIgnoreCase("SERVER"))
+											 {
+		                                         if(!coord.getGuiId().equalsIgnoreCase(uuId.toString()))
+												 {
 		                                             
 		                                            System.out.println("from server " + coord);
 		                                            coord.getX();
@@ -377,32 +362,22 @@ public class Sheep_wolf_gui extends JFrame implements ActionListener {
 		                                         }
 		                                     }
 		                                 } 
-		                                 catch (Exception ex) {
+		                                 catch (Exception ex)
+										 {
 		                                     Logger.getLogger(Sheep_wolf_gui.class.getName()).log(Level.SEVERE, null, ex);
 		                                 }
-		                                 
-		      // Or use unshared variant as in client:
-		      // MouseCoordinate coord = (MouseCoordinate) in.readUnsharedObject();
-		       System.out.println("got response back");
-		        
 		                             }
 		                         }
 		                     });
 		                            
 		                            mythread.start();
-		                          
-
-		    			
+		          }
 		    		
-		    		}
-		    		
-		    		catch(Exception e1)
-		    		{
-		    			System.out.println(e1);
-		    		}  
-		         
-		         
-	    }
+					catch(Exception e1)
+					{
+						System.out.println(e1);
+					}  
+		}
 	    
 	    public void senddata(EventInformation eventInformation)
 	    {
@@ -421,13 +396,6 @@ public class Sheep_wolf_gui extends JFrame implements ActionListener {
 	    }
 
 	
-	    
-	   
-	    
-	 
-
-
-
 	 class liste_wolf extends MouseAdapter 
 	 {
 	      private Point initialLoc;
@@ -439,66 +407,55 @@ public class Sheep_wolf_gui extends JFrame implements ActionListener {
 	      JButton chessPiece;
 	      Sheep_wolf_gui swg;
 	                         @Override
-		 public void mousePressed(MouseEvent me){
+		 public void mousePressed(MouseEvent me)
+		 {
 	              Component comp = (Component)me.getSource();
 	      		  initialLoc = comp.getLocation();
 	              initialLocOnScreen = me.getLocationOnScreen();
-	       //				if(contains(me.getX(), me.getY())){
-//						mousePressed = true;
-//						repaint();
-//	                                        int x = me.getPoint().x;
-//	                                        int y = me.getPoint().y;
-	// 
-				//	}
-				}
+	      
+		 }
 				
-				@Override
-				public void mouseReleased(MouseEvent me){
-					mousePressed = false;
-					repaint();
-	                                Component comp = (Component)me.getSource();
+		@Override
+		public void mouseReleased(MouseEvent me)
+		{
+			mousePressed = false;
+			repaint();
+			Component comp = (Component)me.getSource();
 	                                
 	      Point locOnScreen = me.getLocationOnScreen();
-	      
-
-	      int x = locOnScreen.x - initialLocOnScreen.x + initialLoc.x;
+	     
+		  int x = locOnScreen.x - initialLocOnScreen.x + initialLoc.x;
 	      int y = locOnScreen.y - initialLocOnScreen.y + initialLoc.y;
-	     // swg.squares[][].getLocation(locOnScreen);
-	     Component c=(JLabel)me.getSource();
-	   //  System.out.println(c);
-	      System.out.println("Release location is:"+x+","+y);
+	      Component c=(JLabel)me.getSource();
+		  System.out.println("Release location is:"+x+","+y);
 	      
-	     // if(locOnScreen.y<=200 && locOnScreen.x<=300){
-	          
-	      if(locOnScreen.y>initialLocOnScreen.y && locOnScreen.x<initialLocOnScreen.x){
+		  if(locOnScreen.y>initialLocOnScreen.y && locOnScreen.x<initialLocOnScreen.x){
 	           c.setLocation(initialLoc.x-30, initialLoc.y+30);
 	      }
 	      else if(locOnScreen.y>initialLocOnScreen.y && locOnScreen.x>initialLocOnScreen.x){
-	      c.setLocation(initialLoc.x+30, initialLoc.y+30);
+				c.setLocation(initialLoc.x+30, initialLoc.y+30);
 	      }
 	      else 
-	          //if(locOnScreen.x>=initialLocOnScreen.x || 
-	            //  locOnScreen.x<=initialLocOnScreen.x)
-	      {
-	      JOptionPane.showMessageDialog(null, "Ilegal move");
+		  {
+				JOptionPane.showMessageDialog(null, "Ilegal move");
 	      }
-				}
+		}
 	                     //   }
 				
-				@Override
-				public void mouseExited(MouseEvent me){
-					mouseOver = false;
-					mousePressed = false;
-					repaint();
-				}
-				
-				@Override
-				public void mouseMoved(MouseEvent me){
-					mouseOver = contains(me.getX(), me.getY());
-					repaint();
-				}
-	                         @Override
-	   
+		@Override
+		public void mouseExited(MouseEvent me){
+			mouseOver = false;
+			mousePressed = false;
+			repaint();
+		}
+		
+		@Override
+		public void mouseMoved(MouseEvent me){
+			mouseOver = contains(me.getX(), me.getY());
+			repaint();
+		}
+	    
+		@Override
 	    public void mouseDragged(MouseEvent e) 
 	    {
 	      Component comp = (Component)e.getSource();
@@ -508,110 +465,96 @@ public class Sheep_wolf_gui extends JFrame implements ActionListener {
 	      comp.setLocation(x, y);
 	   }
 	}
-			 
+	
+	
+	
+	
+		class liste_sheep extends MouseAdapter implements Serializable
+		 {
+			private Point initialLoc;
+			private Point initialLocOnScreen;
+			private boolean mouseOver = false;
+			private boolean mousePressed = false;
+			int xCoordinate;
+			int yCoordinate;
+			JButton chessPiece;
+			Sheep_wolf_gui swg;
+				
+				@Override
+				public void mousePressed(MouseEvent me){
+				  Component comp = (Component)me.getSource();
+				  initialLoc = comp.getLocation();
+				  initialLocOnScreen = me.getLocationOnScreen();
+				}
+				
+				@Override
+				public void mouseReleased(MouseEvent me){
+					mousePressed = false;
+					repaint();
+					Component comp = (Component)me.getSource();
+									
+		  Point locOnScreen = me.getLocationOnScreen();
+		  
 
-	    
-
-
-
-
-	 class liste_sheep extends MouseAdapter implements Serializable
-	 {
-		 private Point initialLoc;
-         private Point initialLocOnScreen;
-	private boolean mouseOver = false;
-	private boolean mousePressed = false;
-        int xCoordinate;
-        int yCoordinate;
-        JButton chessPiece;
-        Sheep_wolf_gui swg;
-                         @Override
-			public void mousePressed(MouseEvent me){
-                             Component comp = (Component)me.getSource();
-      initialLoc = comp.getLocation();
-      initialLocOnScreen = me.getLocationOnScreen();
-       //				if(contains(me.getX(), me.getY())){
-//					mousePressed = true;
-//					repaint();
-//                                        int x = me.getPoint().x;
-//                                        int y = me.getPoint().y;
-// 
-			//	}
-			}
-			
-			@Override
-			public void mouseReleased(MouseEvent me){
-				mousePressed = false;
-				repaint();
-                                Component comp = (Component)me.getSource();
-                                
-      Point locOnScreen = me.getLocationOnScreen();
-      
-
-      int x = locOnScreen.x - initialLocOnScreen.x + initialLoc.x;
-      int y = locOnScreen.y - initialLocOnScreen.y + initialLoc.y;
-     // swg.squares[][].getLocation(locOnScreen);
-     Component c=(JLabel)me.getSource();
-   //  System.out.println(c);
-      System.out.println("Release location is:"+x+","+y);
-      if(locOnScreen.y>initialLocOnScreen.y && locOnScreen.x<initialLocOnScreen.x){
-           c.setLocation(initialLoc.x-30, initialLoc.y+30);
-      }
-      else if(locOnScreen.y>initialLocOnScreen.y && locOnScreen.x>initialLocOnScreen.x){
-      c.setLocation(initialLoc.x+30, initialLoc.y+30);
-      }
-      else if(locOnScreen.y<initialLocOnScreen.y && locOnScreen.x<initialLocOnScreen.x){
-           c.setLocation(initialLoc.x-30, initialLoc.y-30);
-      }
-       else if(locOnScreen.y<initialLocOnScreen.y && locOnScreen.x>initialLocOnScreen.x){
-           c.setLocation(initialLoc.x+30, initialLoc.y-30);
-      }
-      else 
-          //if(locOnScreen.x>=initialLocOnScreen.x || 
-            //  locOnScreen.x<=initialLocOnScreen.x)
-      {
-      JOptionPane.showMessageDialog(null, "Ilegal move");
-      }
-			}
-			
-			@Override
-			public void mouseExited(MouseEvent me){
-				mouseOver = false;
-				mousePressed = false;
-				repaint();
-			}
-			
-			@Override
-			public void mouseMoved(MouseEvent me){
-				mouseOver = contains(me.getX(), me.getY());
-				repaint();
-			}
-                         @Override
-		   public void mouseDragged(MouseEvent e) {
-		      Component comp = (Component)e.getSource();
-		      Point locOnScreen = e.getLocationOnScreen();
+		  int x = locOnScreen.x - initialLocOnScreen.x + initialLoc.x;
+		  int y = locOnScreen.y - initialLocOnScreen.y + initialLoc.y;
+		 
+		  Component c=(JLabel)me.getSource();
+	   
+		  System.out.println("Release location is:"+x+","+y);
+		  if(locOnScreen.y>initialLocOnScreen.y && locOnScreen.x<initialLocOnScreen.x){
+			   c.setLocation(initialLoc.x-30, initialLoc.y+30);
+		  }
+		  else if(locOnScreen.y>initialLocOnScreen.y && locOnScreen.x>initialLocOnScreen.x){
+		  c.setLocation(initialLoc.x+30, initialLoc.y+30);
+		  }
+		  else if(locOnScreen.y<initialLocOnScreen.y && locOnScreen.x<initialLocOnScreen.x){
+			   c.setLocation(initialLoc.x-30, initialLoc.y-30);
+		  }
+		   else if(locOnScreen.y<initialLocOnScreen.y && locOnScreen.x>initialLocOnScreen.x){
+			   c.setLocation(initialLoc.x+30, initialLoc.y-30);
+		  }
+		  else 
+		  {
+			JOptionPane.showMessageDialog(null, "Ilegal move");
+		  }
+		}
+				
+		@Override
+		public void mouseExited(MouseEvent me){
+			mouseOver = false;
+			mousePressed = false;
+			repaint();
+		}
 		
-		      int x = locOnScreen.x - initialLocOnScreen.x + initialLoc.x;
-		      int y = locOnScreen.y - initialLocOnScreen.y + initialLoc.y;
-		      comp.setLocation(x, y);
-		   }
+		@Override
+		public void mouseMoved(MouseEvent me){
+			mouseOver = contains(me.getX(), me.getY());
+			repaint();
+		}
+					 @Override
+	   public void mouseDragged(MouseEvent e) {
+		  Component comp = (Component)e.getSource();
+		  Point locOnScreen = e.getLocationOnScreen();
+	
+		  int x = locOnScreen.x - initialLocOnScreen.x + initialLoc.x;
+		  int y = locOnScreen.y - initialLocOnScreen.y + initialLoc.y;
+		  comp.setLocation(x, y);
+	   }
 	  }
 	 
 	 class Circlewolf extends JLabel{
 			
 			private boolean mouseOver = false;
 			private boolean mousePressed = false;
-		         private int dragOffsetX;
+		    private int dragOffsetX;
 		    private int dragOffsetY;
-		        int xCoordinate;
+		    int xCoordinate;
 		    int yCoordinate;
-		     JLabel chessPiece;
+		    JLabel chessPiece;
 			public Circlewolf(String text){
 				super(text);
 				setOpaque(false);
-				//setFocusPainted(false);
-				//setBorderPainted(false);
-					
 			}
 			
 			private int getDiameter(){
@@ -642,8 +585,8 @@ public class Sheep_wolf_gui extends JFrame implements ActionListener {
 					g.setColor(Color.LIGHT_GRAY);
 				}
 				
-		                else{
-		                    g.setColor(Color.DARK_GRAY);
+				else{
+					g.setColor(Color.DARK_GRAY);
 		                
 				}
 				g.fillOval(getWidth()/2 - radius, getHeight()/2 - radius, diameter, diameter);
@@ -664,83 +607,81 @@ public class Sheep_wolf_gui extends JFrame implements ActionListener {
 				g.drawString(getText(), getWidth()/2 - stringWidth/2, getHeight()/2 + stringHeight/4);
 			}
 		}
-	 class CircleButtonsheep extends JButton{
-		 private Point initialLoc;
-	         private Point initialLocOnScreen;
-		private boolean mouseOver = false;
-		private boolean mousePressed = false;
-	        int xCoordinate;
-	        int yCoordinate;
-	        JButton chessPiece;
-	        Sheep_wolf_gui swg;
-		public CircleButtonsheep(String text){
-			super(text);
-			setOpaque(false);
-			setFocusPainted(false);
-			setBorderPainted(false);
-			
-			MouseAdapter mouseListener = new MouseAdapter(){
+		
+	    class CircleButtonsheep extends JButton
+		{
+			 private Point initialLoc;
+			 private Point initialLocOnScreen;
+			 private boolean mouseOver = false;
+			 private boolean mousePressed = false;
+	         int xCoordinate;
+	         int yCoordinate;
+	         JButton chessPiece;
+	         Sheep_wolf_gui swg;
+		     public CircleButtonsheep(String text)
+			 {
+				 super(text);
+				 setOpaque(false);
+				 setFocusPainted(false);
+				 setBorderPainted(false);
 				
-			@Override
-				public void mousePressed(MouseEvent me){
-	                             Component comp = (Component)me.getSource();
-	      initialLoc = comp.getLocation();
-	      initialLocOnScreen = me.getLocationOnScreen();
-	       //				if(contains(me.getX(), me.getY())){
-//						mousePressed = true;
-//						repaint();
-//	                                        int x = me.getPoint().x;
-//	                                        int y = me.getPoint().y;
-	// 
-				//	}
-				}
-				
-				@Override
-				public void mouseReleased(MouseEvent me){
-					mousePressed = false;
-					repaint();
-	                                Component comp = (Component)me.getSource();
-	                                
-	      Point locOnScreen = me.getLocationOnScreen();
-	      
+				 MouseAdapter mouseListener = new MouseAdapter()
+				 {
+					
+					 @Override
+					public void mousePressed(MouseEvent me){
+						 Component comp = (Component)me.getSource();
+						 initialLoc = comp.getLocation();
+						 initialLocOnScreen = me.getLocationOnScreen();
+					}
+						
+					@Override
+					public void mouseReleased(MouseEvent me){
+							mousePressed = false;
+							repaint();
+							Component comp = (Component)me.getSource();
+											
+						Point locOnScreen = me.getLocationOnScreen();
+					  
 
-	      int x = locOnScreen.x - initialLocOnScreen.x + initialLoc.x;
-	      int y = locOnScreen.y - initialLocOnScreen.y + initialLoc.y;
-	     // swg.squares[][].getLocation(locOnScreen);
-	     Component c=(JPanel)me.getSource();
-	     System.out.println(c);
-	      System.out.println("Release location is:"+x+","+y);
-	      c.setLocation(x, y);
-	      
-				}
-				
-				@Override
-				public void mouseExited(MouseEvent me){
-					mouseOver = false;
-					mousePressed = false;
-					repaint();
-				}
-				
-				@Override
-				public void mouseMoved(MouseEvent me){
-					mouseOver = contains(me.getX(), me.getY());
-					repaint();
-				}
-	                         @Override
-	   public void mouseDragged(MouseEvent e) {
-	      Component comp = (Component)e.getSource();
-	      Point locOnScreen = e.getLocationOnScreen();
+					   int x = locOnScreen.x - initialLocOnScreen.x + initialLoc.x;
+					   int y = locOnScreen.y - initialLocOnScreen.y + initialLoc.y;
+					 // swg.squares[][].getLocation(locOnScreen);
+					   Component c=(JPanel)me.getSource();
+					   System.out.println(c);
+					   System.out.println("Release location is:"+x+","+y);
+					   c.setLocation(x, y);
+				  
+					}
+						
+					@Override
+					public void mouseExited(MouseEvent me){
+						mouseOver = false;
+						mousePressed = false;
+						repaint();
+					}
+					
+					@Override
+					public void mouseMoved(MouseEvent me){
+						mouseOver = contains(me.getX(), me.getY());
+						repaint();
+					}
+					
+					@Override
+					public void mouseDragged(MouseEvent e) {
+					  Component comp = (Component)e.getSource();
+					  Point locOnScreen = e.getLocationOnScreen();
 
-	      int x = locOnScreen.x - initialLocOnScreen.x + initialLoc.x;
-	      int y = locOnScreen.y - initialLocOnScreen.y + initialLoc.y;
-	      comp.setLocation(x, y);
-	   }
-			};
+					  int x = locOnScreen.x - initialLocOnScreen.x + initialLoc.x;
+					  int y = locOnScreen.y - initialLocOnScreen.y + initialLoc.y;
+					  comp.setLocation(x, y);
+				   }
+				};
+					
 				
-			
-			addMouseListener(mouseListener);
-			addMouseMotionListener(mouseListener);		
-		}
+				addMouseListener(mouseListener);
+				addMouseMotionListener(mouseListener);		
+			}
 		
 		private int getDiameter(){
 			int diameter = Math.min(getWidth(), getHeight());
@@ -793,9 +734,6 @@ public class Sheep_wolf_gui extends JFrame implements ActionListener {
 		}
 	}
 	
-
-			 
-
 	} 
 } 
 	
